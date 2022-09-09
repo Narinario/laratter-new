@@ -1,6 +1,10 @@
+// routes/web.php
+
 <?php
 
 use Illuminate\Support\Facades\Route;
+// 🔽 追加
+use App\Http\Controllers\TweetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// 🔽 追加
+Route::resource('tweet', TweetController::class);
 
 Route::get('/', function () {
     return view('welcome');
