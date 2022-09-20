@@ -125,7 +125,7 @@ class TweetController extends Controller
         return redirect()->route('tweet.index');
     }
     public function mydata()
-  {
+    {
     // Userモデルに定義したリレーションを使用してデータを取得する．
     $tweets = User::query()
       ->find(Auth::user()->id)
@@ -133,5 +133,17 @@ class TweetController extends Controller
       ->orderBy('created_at','desc')
       ->get();
     return view('tweet.index', compact('tweets'));
-  }
+    }
+    public function timeline()
+    {
+    // フォローしているユーザを取得する
+    $followings = User::find(Auth::id())->followings->pluck('id')->all();
+    // 自分とフォローしている人が投稿したツイートを取得する
+    $tweets = Tweet::query()
+        ->where('user_id', Auth::id())
+        ->orWhereIn('user_id', $followings)
+        ->orderBy('updated_at', 'desc')
+        ->get();
+    return view('tweet.index', compact('tweets'));
+    }
 }
