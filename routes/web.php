@@ -1,13 +1,11 @@
-// routes/web.php
-
 <?php
-
 use Illuminate\Support\Facades\Route;
 // 🔽 追加
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +20,7 @@ use App\Http\Controllers\SearchController;
 
 // 🔽 追加
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('profile', profileController::class);
     Route::get('/tweet/search/input', [SearchController::class, 'create'])->name('search.input');
      Route::get('/tweet/search/result', [SearchController::class, 'index'])->name('search.result');
 

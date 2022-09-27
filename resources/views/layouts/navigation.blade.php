@@ -46,6 +46,11 @@
             {{ __('Search') }}
           </x-nav-link>
         </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <x-nav-link :href="route('profile.create')" :active="request()->routeIs('profile.create')">
+            {{ __('Editprofile') }}
+          </x-nav-link>
+        </div>
 
       </div>
 
@@ -124,6 +129,11 @@
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('search.input')" :active="request()->routeIs('search.input')">
         {{ __('Search') }}
+      </x-responsive-nav-link>
+    </div>
+    <div class="pt-2 pb-3 space-y-1">
+      <x-responsive-nav-link :href="route('profile.create')" :active="request()->routeIs('profile.create')">
+          {{ __('Editprofile') }}
       </x-responsive-nav-link>
     </div>
 

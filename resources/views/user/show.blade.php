@@ -19,6 +19,12 @@
               </p>
             </div>
             <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Profile</p>
+              <p class="py-2 px-3 text-grey-darkest" id="profile">
+                {{$user->profile->profile}}
+              </p>
+            </div>
+            <div class="flex flex-col mb-4">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Joined_at</p>
               <p class="py-2 px-3 text-grey-darkest" id="created_at">
                 {{$user->created_at}}
